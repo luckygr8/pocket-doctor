@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "420662902939",
+    "firebase_url": "https://pocket-doctor-56bc3.firebaseio.com",
+    "project_id": "pocket-doctor-56bc3",
+    "storage_bucket": "pocket-doctor-56bc3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420662902939:android:6c14103e62342222bc063e",
+        "android_client_info": {
+          "package_name": "com.luckyandgoga.pocket_doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "420662902939-tpb18veo06aklo920lrrtr4gsi2f344p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.luckyandgoga.pocket_doctor",
+            "certificate_hash": "668c335f8afa53df813ef75edba7cb8f7aab69d7"
+          }
+        },
+        {
+          "client_id": "420662902939-2e9h4q58gcaujquq7ci0sdqdh7qep0t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr6q3UfQWbMWSLbE6FEe6whpPD4iNYep4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "420662902939-2e9h4q58gcaujquq7ci0sdqdh7qep0t4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
