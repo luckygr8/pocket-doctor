@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pocket_doctor/screens/intro.dart';
 import 'package:provider/provider.dart';
 import 'package:pocket_doctor/config/const.dart';
 import 'package:pocket_doctor/models/user.dart';
@@ -12,28 +13,41 @@ void main() {
 class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => SManageIndex(),
-      child: MaterialApp(
-        theme: ThemeData(
-            primaryColor: primaryColor,
-            primaryColorDark: primaryColorDark,
-            accentColor: darkColor,
-            cursorColor: darkColor,
-            hintColor: primaryColorDark,
-            fontFamily: 'Comfortaa'),
-        home: SafeArea(
-          child: Scaffold(
-            backgroundColor: lightColor,
-            appBar: Header(),
-            body: AppView(),
-            bottomNavigationBar: CBottomNavBar(),
-          ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      routes: {
+        '/main':(_)=>MainScreen(),
+        '/intro':(_)=>IntroScreen()
+      },
+      initialRoute: '/intro',
+      theme: ThemeData(
+          primaryColor: primaryColor,
+          primaryColorDark: primaryColorDark,
+          accentColor: darkColor,
+          cursorColor: darkColor,
+          hintColor: primaryColorDark,
+          fontFamily: 'Comfortaa'),
+    );
+  }
+}
+
+class MainScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: ChangeNotifierProvider(
+        create: (context) => SManageIndex(),
+        child: Scaffold(
+          backgroundColor: lightColor,
+          appBar: Header(),
+          body: AppView(),
+          bottomNavigationBar: CBottomNavBar(),
         ),
       ),
     );
   }
 }
+
 
 class CBottomNavBar extends StatefulWidget {
   @override
