@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 import 'package:pocket_doctor/config/const.dart';
 import 'package:pocket_doctor/models/user.dart';
+import 'package:pocket_doctor/state/manage_index.dart';
 
 void main() {
   runApp(MainApp());
@@ -10,20 +12,23 @@ void main() {
 class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          primaryColor: primaryColor,
-          primaryColorDark: primaryColorDark,
-          accentColor: darkColor,
-          cursorColor: darkColor,
-          hintColor: primaryColorDark,
-          fontFamily: 'Comfortaa'),
-      home: SafeArea(
-        child: Scaffold(
-          backgroundColor: lightColor,
-          appBar: Header(),
-          body: AppView(),
-          bottomNavigationBar: CBottomNavBar(),
+    return ChangeNotifierProvider(
+      create: (_) => SManageIndex(),
+      child: MaterialApp(
+        theme: ThemeData(
+            primaryColor: primaryColor,
+            primaryColorDark: primaryColorDark,
+            accentColor: darkColor,
+            cursorColor: darkColor,
+            hintColor: primaryColorDark,
+            fontFamily: 'Comfortaa'),
+        home: SafeArea(
+          child: Scaffold(
+            backgroundColor: lightColor,
+            appBar: Header(),
+            body: AppView(),
+            bottomNavigationBar: CBottomNavBar(),
+          ),
         ),
       ),
     );
@@ -38,23 +43,31 @@ class CBottomNavBar extends StatefulWidget {
 class _CBottomNavBarState extends State<CBottomNavBar> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-      clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(
-          color: primaryColorDark,
-          boxShadow: [
-            BoxShadow(color: primaryColorDark, blurRadius: 4, spreadRadius: 2)
+    return Consumer<SManageIndex>(
+      builder: (context, manageIndex, child) => Container(
+        height: 80,
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(
+            color: primaryColorDark,
+            boxShadow: [
+              BoxShadow(color: primaryColorDark, blurRadius: 4, spreadRadius: 2)
+            ],
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20), topLeft: Radius.circular(20))),
+        child: BottomNavigationBar(
+          backgroundColor: primaryColorDark,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.ac_unit), title: Text('one')),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.access_alarms), title: Text('two')),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.accessibility_new), title: Text('three')),
           ],
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(20), topLeft: Radius.circular(20))),
-      child: BottomNavigationBar(backgroundColor: primaryColorDark, items: [
-        BottomNavigationBarItem(icon: Icon(Icons.ac_unit), title: Text('one')),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.access_alarms), title: Text('two')),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.accessibility_new), title: Text('three')),
-      ]),
+          currentIndex: manageIndex.index,
+          onTap: (value) => manageIndex.changePage(value),
+        ),
+      ),
     );
   }
 }
@@ -62,25 +75,29 @@ class _CBottomNavBarState extends State<CBottomNavBar> {
 class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      physics: BouncingScrollPhysics(),
-      children: [
-        Container(
-          child: Center(
-            child: Text('first page'),
+    return Consumer<SManageIndex>(
+      builder: (context, manageIndex, child) => PageView(
+        controller: manageIndex.controller,
+        physics: BouncingScrollPhysics(),
+        onPageChanged: (value) => manageIndex.changePage(value),
+        children: [
+          Container(
+            child: Center(
+              child: Text('first page'),
+            ),
           ),
-        ),
-        Container(
-          child: Center(
-            child: Text('second page'),
+          Container(
+            child: Center(
+              child: Text('second page'),
+            ),
           ),
-        ),
-        Container(
-          child: Center(
-            child: Text('third page'),
+          Container(
+            child: Center(
+              child: Text('third page'),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -164,7 +181,6 @@ class _CMemberSelectButtonState extends State<CMemberSelectButton> {
 
   @override
   Widget build(BuildContext context) {
-    int test=10;
     return Container(
       height: 55,
       padding: EdgeInsets.all(15),
