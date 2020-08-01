@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pocket_doctor/screens/intro.dart';
+import 'package:pocket_doctor/screens/signUp.dart';
 import 'package:provider/provider.dart';
 import 'package:pocket_doctor/config/const.dart';
 import 'package:pocket_doctor/models/user.dart';
@@ -17,9 +18,10 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/main':(_)=>MainScreen(),
-        '/intro':(_)=>IntroScreen()
+        '/intro':(_)=>IntroScreen(),
+        '/signUp':(_)=>SignUpPage()
       },
-      initialRoute: '/intro',
+      initialRoute: '/signUp',
       theme: ThemeData(
           primaryColor: primaryColor,
           primaryColorDark: primaryColorDark,
