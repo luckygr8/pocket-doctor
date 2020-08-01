@@ -138,12 +138,16 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               children: [
                 Expanded(
-                  flex: 50,
+                  flex: 2,
                   child: Center(child: CMemberSelectButton()),
                 ),
                 Expanded(
-                  flex: 50,
+                  flex: 1,
                   child: Center(child: CMoreButton()),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Center(child: Hero(tag:'heart',child: Heart())),
                 ),
               ],
             ),
