@@ -1,15 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pocket_doctor/firebase/auth.dart';
 import 'package:pocket_doctor/screens/mainScreen.dart';
 import 'package:pocket_doctor/screens/signInScreen.dart';
 import 'package:pocket_doctor/screens/signUpScreen.dart';
 import 'package:pocket_doctor/config/const.dart';
 
-void main() {
-  runApp(MainApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  var user = await Auth.getSigningInfo();
+  print(user);
+  runApp(MainApp(user));
 }
 
 class MainApp extends StatelessWidget {
+  final FirebaseUser user;
+
+  MainApp(this.user);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +29,7 @@ class MainApp extends StatelessWidget {
         '/signIn': (_) => SignInScreen(),
         '/signUp': (_) => SignUpScreen()
       },
-      initialRoute: '/signIn',
+      initialRoute: user == null ? '/signIn' : '/main',
       theme: ThemeData(
           primaryColor: primaryColor,
           primaryColorDark: primaryColorDark,

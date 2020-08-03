@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_doctor/components/text.dart';
 import 'package:pocket_doctor/config/const.dart';
+import 'package:pocket_doctor/firebase/auth.dart';
 import 'package:pocket_doctor/models/user.dart';
 
 class CButton extends StatelessWidget {
@@ -40,18 +41,24 @@ class CMoreButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: side.toDouble(),
-      width: side.toDouble(),
-      decoration: BoxDecoration(
-          color: lightColor,
-          boxShadow: [
-            BoxShadow(color: primaryColor, blurRadius: 1, spreadRadius: 4)
-          ],
-          borderRadius: BorderRadius.circular(side.toDouble())),
-      child: Icon(
-        Icons.exit_to_app,
-        color: darkColor,
+    return GestureDetector(
+      onTap: () async {
+        await Auth.signOut();
+        Navigator.of(context).popAndPushNamed('/signIn');
+      },
+      child: Container(
+        height: side.toDouble(),
+        width: side.toDouble(),
+        decoration: BoxDecoration(
+            color: lightColor,
+            boxShadow: [
+              BoxShadow(color: primaryColor, blurRadius: 1, spreadRadius: 4)
+            ],
+            borderRadius: BorderRadius.circular(side.toDouble())),
+        child: Icon(
+          Icons.exit_to_app,
+          color: darkColor,
+        ),
       ),
     );
   }

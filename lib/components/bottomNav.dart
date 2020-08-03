@@ -15,15 +15,22 @@ class _CBottomNavBarState extends State<CBottomNavBar> {
     return Consumer<SManageIndex>(
       builder: (context, manageIndex, child) => Container(
         height: 80,
-        clipBehavior: Clip.antiAliasWithSaveLayer,
+        clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
             color: primaryColorDark,
             boxShadow: [
-              BoxShadow(color: primaryColorDark, blurRadius: 4, spreadRadius: 2)
+              BoxShadow(
+                color: primaryColorDark,
+                blurRadius: 4,
+                spreadRadius: 6,
+                offset: Offset(5, 5),
+              ),
             ],
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(20), topLeft: Radius.circular(20))),
         child: BottomNavigationBar(
+          elevation: 10,
+          selectedItemColor: darkColor,
           backgroundColor: primaryColorDark,
           items: [
             BottomNavigationBarItem(
