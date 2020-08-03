@@ -4,6 +4,7 @@ import 'package:pocket_doctor/components/header.dart';
 import 'package:pocket_doctor/config/const.dart';
 import 'package:pocket_doctor/state/manage_index.dart';
 import 'package:provider/provider.dart';
+import 'package:pocket_doctor/pages/appointments_page.dart';
 
 class MainScreen extends StatelessWidget {
   @override
@@ -32,9 +33,7 @@ class AppView extends StatelessWidget {
         onPageChanged: (value) => manageIndex.changePage(value),
         children: [
           Container(
-            child: Center(
-              child: Text('first page'),
-            ),
+            child: AppointmentsPage(),
           ),
           Container(
             child: Center(
