@@ -1,4 +1,3 @@
-import 'package:pocket_doctor/components/appointment_res.dart';
 import 'package:pocket_doctor/models/appointment.dart';
 import 'package:flutter/material.dart';
 import 'package:pocket_doctor/config/const.dart';
@@ -23,11 +22,11 @@ class AppointmentsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-//    return ListView(
-//      physics: BouncingScrollPhysics(),
-//      children: createAppointmentTiles(),
-//    );
-  return NoAppointmentFound();
+    return ListView(
+      physics: BouncingScrollPhysics(),
+      children: createAppointmentTiles(),
+    );
+    //return NoAppointmentFound();
   }
 }
 

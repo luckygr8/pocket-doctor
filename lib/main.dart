@@ -11,6 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var user = await Auth.getSigningInfo();
   print(user);
+  //print(user.email);
   runApp(MainApp(user));
 }
 

@@ -10,8 +10,17 @@ class NoAppointmentFound extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/no appointments.png',height: size.height*.3,width: size.height*.3,),
-          CText(value: 'Yaay ! No appointments for today',factor: 1.5,textColor: primaryColorDark,fontWeight: FontWeight.bold,),
+          Image.asset(
+            'assets/no appointments.png',
+            height: size.height * .3,
+            width: size.height * .3,
+          ),
+          CText(
+            value: 'Yaay ! No appointments for today',
+            factor: 1.5,
+            textColor: primaryColorDark,
+            fontWeight: FontWeight.bold,
+          ),
         ],
       ),
     );

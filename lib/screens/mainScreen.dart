@@ -11,6 +11,7 @@ import 'package:pocket_doctor/pages/appointments_page.dart';
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    setSize(MediaQuery.of(context).size);
     return SafeArea(
       child: ChangeNotifierProvider(
         create: (context) => SManageIndex(),
@@ -39,14 +40,12 @@ class AppView extends StatelessWidget {
           ),
           Container(
             child: Center(
-
               // for testing
               child: NoMedicinesFound(),
             ),
           ),
           Container(
             child: Center(
-
               // for testing
               child: NoDocumentsFound(),
             ),
