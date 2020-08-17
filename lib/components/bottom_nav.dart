@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pocket_doctor/components/text.dart';
 import 'package:pocket_doctor/config/const.dart';
 import 'package:pocket_doctor/state/manage_index.dart';
 import 'package:provider/provider.dart';
@@ -30,25 +31,25 @@ class _CBottomNavBarState extends State<CBottomNavBar> {
                 topRight: Radius.circular(20), topLeft: Radius.circular(20))),
         child: BottomNavigationBar(
           elevation: 10,
-          selectedItemColor: darkColor,
+          selectedItemColor: lightColor,
           backgroundColor: primaryColorDark,
           items: [
             BottomNavigationBarItem(
                 icon: Icon(
                   FontAwesomeIcons.hospital,
                 ),
-                title: Text('Appointments')),
+                title: CText(value: 'Appointments',factor: 1,textColor: lightColor,)),
             BottomNavigationBarItem(
               icon: Icon(
                 FontAwesomeIcons.pills,
               ),
-              title: Text('Medicines'),
+              title: CText(value: 'Medicines',factor: 1,textColor: lightColor,),
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 FontAwesomeIcons.bookMedical,
               ),
-              title: Text('Documents'),
+              title: CText(value: 'Documents',factor: 1,textColor: lightColor,),
             ),
           ],
           currentIndex: manageIndex.index,

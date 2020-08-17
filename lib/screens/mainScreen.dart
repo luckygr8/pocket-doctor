@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pocket_doctor/components/bottomNav.dart';
+import 'package:pocket_doctor/components/bottom_nav.dart';
+import 'package:pocket_doctor/components/documents_res.dart';
 import 'package:pocket_doctor/components/header.dart';
+import 'package:pocket_doctor/components/medicines_res.dart';
 import 'package:pocket_doctor/config/const.dart';
 import 'package:pocket_doctor/state/manage_index.dart';
 import 'package:provider/provider.dart';
@@ -37,12 +39,16 @@ class AppView extends StatelessWidget {
           ),
           Container(
             child: Center(
-              child: Text('second page'),
+
+              // for testing
+              child: NoMedicinesFound(),
             ),
           ),
           Container(
             child: Center(
-              child: Text('third page'),
+
+              // for testing
+              child: NoDocumentsFound(),
             ),
           ),
         ],

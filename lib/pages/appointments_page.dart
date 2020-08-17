@@ -1,3 +1,4 @@
+import 'package:pocket_doctor/components/appointment_res.dart';
 import 'package:pocket_doctor/models/appointment.dart';
 import 'package:flutter/material.dart';
 import 'package:pocket_doctor/config/const.dart';
@@ -22,9 +23,11 @@ class AppointmentsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: createAppointmentTiles(),
-    );
+//    return ListView(
+//      physics: BouncingScrollPhysics(),
+//      children: createAppointmentTiles(),
+//    );
+  return NoAppointmentFound();
   }
 }
 
@@ -38,8 +41,8 @@ class AppointmentTile extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: appointment.isActive ? primaryColorDark : primaryColor,
-            blurRadius: 4.0,
-            spreadRadius: 2.0,
+            blurRadius: 2.0,
+            spreadRadius: 1.0,
           ),
         ],
         borderRadius: BorderRadius.circular(30),
@@ -50,7 +53,7 @@ class AppointmentTile extends StatelessWidget {
         ),
       ),
       padding: EdgeInsets.all(20.0),
-      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+      margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
