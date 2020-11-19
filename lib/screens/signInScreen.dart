@@ -101,7 +101,7 @@ class SignInScreen extends StatelessWidget {
                           builder: (context, signInState, child) => CButton(
                             text: 'Continue',
                             onPressed: () async {
-                              if (signInState.validate()) {
+                              /*if (signInState.validate()) {
                                 FirebaseUser user = await Auth.signIn(
                                     signInState.email,
                                     signInState.password,
@@ -110,7 +110,7 @@ class SignInScreen extends StatelessWidget {
                                   Navigator.of(context)
                                       .popAndPushNamed('/main');
                                 }
-                              }
+                              }*/
 
                               //print('pressedd');
                               //Navigator.of(context).popAndPushNamed('/main');

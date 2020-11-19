@@ -13,16 +13,16 @@ class Member {
       {@required this.name, this.appointments, this.documents, this.medicines});
 
   static List<Member> testList = [
-    Member(name: 'Papa',appointments: [],documents: [],medicines: []),
-    Member(name: 'Mummy',appointments: [],documents: [],medicines: []),
-    Member(name: 'Daadi',appointments: [],documents: [],medicines: []),
-    Member(name: 'NiKKa',appointments: [],documents: [],medicines: []),
+    Member(name: 'Papa', appointments: [], documents: [], medicines: []),
+    Member(name: 'Mummy', appointments: [], documents: [], medicines: []),
+    Member(name: 'Daadi', appointments: [], documents: [], medicines: []),
+    Member(name: 'NiKKa', appointments: [], documents: [], medicines: []),
   ];
 }
 
-class User {
+class AppUser {
   String email;
   List<Member> members;
 
-  User({@required this.email, this.members});
+  AppUser({@required this.email, this.members});
 }

@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+/*import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:pocket_doctor/components/text.dart';
 import 'package:pocket_doctor/config/const.dart';
@@ -135,3 +135,4 @@ class Auth {
     return _auth.signOut();
   }
 }
+*/
