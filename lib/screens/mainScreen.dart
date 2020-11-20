@@ -8,6 +8,8 @@ import 'package:pocket_doctor/state/manage_index.dart';
 import 'package:provider/provider.dart';
 import 'package:pocket_doctor/pages/appointments_page.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -27,8 +29,23 @@ class MainScreen extends StatelessWidget {
 }
 
 class AppView extends StatelessWidget {
+  final firestore = FirebaseFirestore.instance;
+  var c;
+  void getMessage() async {
+    final data = await firestore.collection('users').get();
+    print("\n\n---------------------------------------------------\n\n");
+    await firestore.collection("users").get().then((querySnapshot) {
+      querySnapshot.docs.forEach((result) {
+        c = result.data();
+        print("----------------------------$c-------------------------");
+      });
+    });
+    print(c["test@gmail.com"]);
+  }
+
   @override
   Widget build(BuildContext context) {
+    getMessage();
     return Consumer<SManageIndex>(
       builder: (context, manageIndex, child) => PageView(
         controller: manageIndex.controller,

@@ -16,7 +16,7 @@ void main() async {
   /*var user = await Auth.getSigningInfo();
   print(user);*/
   Firebase.initializeApp();
-  getData();
+  // getData();
   //print(user.email);
   runApp(MainApp(AppUser(email: "gg@gg.com")));
 }
