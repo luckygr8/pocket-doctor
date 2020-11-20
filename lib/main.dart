@@ -13,9 +13,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   /*var user = await Auth.getSigningInfo();
   print(user);*/
-  Firebase.initializeApp();
   // getData();
   //print(user.email);
   runApp(MainApp(AppUser(email: "gg@gg.com")));
@@ -28,6 +28,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Firebase.initializeApp();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorObservers: [HeroController()],
@@ -52,3 +53,7 @@ void getData() async {
   var query = FirebaseFirestore.instance.collection("users");
   await query.get().then((value) => print(value));
 }
+
+/**
+ * 
+ */

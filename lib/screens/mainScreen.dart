@@ -32,15 +32,13 @@ class AppView extends StatelessWidget {
   final firestore = FirebaseFirestore.instance;
   var c;
   void getMessage() async {
-    final data = await firestore.collection('users').get();
     print("\n\n---------------------------------------------------\n\n");
-    await firestore.collection("users").get().then((querySnapshot) {
-      querySnapshot.docs.forEach((result) {
+    await firestore.collection("goga@gmail.com").get().then((value) {
+      value.docs.forEach((result) {
         c = result.data();
-        print("----------------------------$c-------------------------");
       });
     });
-    print(c["test@gmail.com"]);
+    print(c);
   }
 
   @override
