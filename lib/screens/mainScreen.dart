@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pocket_doctor/components/bottom_nav.dart';
 import 'package:pocket_doctor/components/documents_res.dart';
@@ -33,12 +34,63 @@ class AppView extends StatelessWidget {
   var c;
   void getMessage() async {
     print("\n\n---------------------------------------------------\n\n");
-    await firestore.collection("goga@gmail.com").get().then((value) {
-      value.docs.forEach((result) {
-        c = result.data();
-      });
+    //for fetching data from id
+    await firestore
+        .collection("users")
+        .doc("goga@email.com")
+        .get()
+        .then((value) {
+      c = value.data();
     });
     print(c);
+
+    c['alice']['appointments'].add({
+      'date': Timestamp(1606329000, 0),
+      'doctorName': 'Dr. Potts',
+      'description': 'colddrink',
+      'isActive': false
+    });
+
+    //for update in firestore
+    await firestore
+        .collection("users")
+        .doc("goga@email.com")
+        .update(c)
+        .then((_) {
+      print("--update successful--");
+    });
+
+    //for adding new data in firestore
+    await firestore.collection("users").doc("dutta@email.com").set({
+      'bob': {
+        'appointments': [
+          {
+            'date': Timestamp(1606329000, 0),
+            'doctorName': 'Dr. Narayana',
+            'description': 'headache',
+            'isActive': false
+          }
+        ],
+        'medicines': [
+          {
+            'doctorName': 'Dr. Mohit',
+            'times': {'1:30 PM': false, '9:30 AM': true},
+            'quantity': '1 tablet',
+            'description': 'for acidity',
+            'medicineName': 'Zinetac'
+          }
+        ],
+        'documents': [
+          {
+            'date': Timestamp(1606069800, 0),
+            'description': 'x-ray report',
+            'location': ""
+          }
+        ]
+      }
+    }).then((_) {
+      print("--successfully added new user!--");
+    });
   }
 
   @override
