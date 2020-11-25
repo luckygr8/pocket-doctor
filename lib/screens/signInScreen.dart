@@ -101,19 +101,17 @@ class SignInScreen extends StatelessWidget {
                           builder: (context, signInState, child) => CButton(
                             text: 'Continue',
                             onPressed: () async {
-                              /*if (signInState.validate()) {
-                                FirebaseUser user = await Auth.signIn(
-                                    signInState.email,
-                                    signInState.password,
-                                    signInState);
+                              if (signInState.validate()) {
+                                User user = await Auth.signIn(signInState.email,
+                                    signInState.password, signInState);
                                 if (user != null) {
                                   Navigator.of(context)
                                       .popAndPushNamed('/main');
                                 }
-                              }*/
+                              }
 
                               //print('pressedd');
-                              //Navigator.of(context).popAndPushNamed('/main');
+                              Navigator.of(context).popAndPushNamed('/main');
                               // TODO @goga please find why hero animation not working
                               //Navigator.popAndPushNamed(context, '/main');
                               //Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainScreen(),));

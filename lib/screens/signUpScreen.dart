@@ -104,15 +104,13 @@ class SignUpScreen extends StatelessWidget {
                         builder: (context, signUpState, child) => CButton(
                           text: 'Signup',
                           onPressed: () async {
-                            /*if (signUpState.validate()) {
-                              FirebaseUser user = await Auth.signUp(
-                                  signUpState.email,
-                                  signUpState.password,
-                                  signUpState);
+                            if (signUpState.validate()) {
+                              User user = await Auth.signUp(signUpState.email,
+                                  signUpState.password, signUpState);
                               if (user != null) {
                                 Navigator.of(context).popAndPushNamed('/main');
                               }
-                            }*/
+                            }
                           },
                         ),
                       ),

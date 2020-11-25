@@ -7,22 +7,22 @@ import 'package:pocket_doctor/screens/mainScreen.dart';
 import 'package:pocket_doctor/screens/signInScreen.dart';
 import 'package:pocket_doctor/screens/signUpScreen.dart';
 import 'package:pocket_doctor/config/const.dart';
-
+import 'firebase/auth.dart';
 //remove temp
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  /*var user = await Auth.getSigningInfo();
-  print(user);*/
-  // getData();
-  //print(user.email);
-  runApp(MainApp(AppUser(email: "gg@gg.com")));
+  var user = Auth.getSigningInfo();
+  // print("--------------------------------------$user");
+  // print("--------------------------------------${user.email}");
+  // runApp(MainApp(AppUser(email: user.email)));
+  runApp(MainApp(user));
 }
 
 class MainApp extends StatelessWidget {
-  final AppUser user;
+  final user;
 
   MainApp(this.user);
 
@@ -47,11 +47,6 @@ class MainApp extends StatelessWidget {
           fontFamily: 'Comfortaa'),
     );
   }
-}
-
-void getData() async {
-  var query = FirebaseFirestore.instance.collection("users");
-  await query.get().then((value) => print(value));
 }
 
 /**

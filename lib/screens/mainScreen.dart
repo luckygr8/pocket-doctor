@@ -43,7 +43,7 @@ class AppView extends StatelessWidget {
       c = value.data();
     });
     print(c);
-
+/*
     c['alice']['appointments'].add({
       'date': Timestamp(1606329000, 0),
       'doctorName': 'Dr. Potts',
@@ -91,6 +91,8 @@ class AppView extends StatelessWidget {
     }).then((_) {
       print("--successfully added new user!--");
     });
+
+ */
   }
 
   @override

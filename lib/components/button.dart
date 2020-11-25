@@ -43,7 +43,7 @@ class CMoreButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        //await Auth.signOut();
+        await Auth.signOut();
         Navigator.of(context).popAndPushNamed('/signIn');
       },
       child: Container(

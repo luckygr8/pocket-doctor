@@ -1,4 +1,5 @@
-/*import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:pocket_doctor/components/text.dart';
 import 'package:pocket_doctor/config/const.dart';
@@ -8,15 +9,15 @@ import 'package:pocket_doctor/state/signUpState.dart';
 class Auth {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  static Future<FirebaseUser> getSigningInfo() async {
-    return await _auth.currentUser();
+  static User getSigningInfo() {
+    return _auth.currentUser;
   }
 
   // create a method to signUP
-  static Future<FirebaseUser> signUp(
+  static Future<User> signUp(
       String email, String password, SignUpState state) async {
     try {
-      AuthResult res = await _auth.createUserWithEmailAndPassword(
+      final res = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       if (!(res == null)) {
         print('$res sucess');
@@ -25,6 +26,11 @@ class Auth {
           factor: 1.5,
           textColor: lightColor,
         ));
+        final firestore = FirebaseFirestore.instance;
+        //ToDo: we have to make it global
+        await firestore.collection("users").doc(email).set({}).then((_) {
+          print("--successfully added new user!--");
+        });
         return res.user;
       } else {
         state.setPlaceholder(CText(
@@ -69,10 +75,10 @@ class Auth {
     }
   }
 
-  static Future<FirebaseUser> signIn(
+  static Future<User> signIn(
       String email, String password, SignInState state) async {
     try {
-      AuthResult res = await _auth.signInWithEmailAndPassword(
+      final res = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       if (!(res == null)) {
         {
@@ -135,4 +141,3 @@ class Auth {
     return _auth.signOut();
   }
 }
-*/
