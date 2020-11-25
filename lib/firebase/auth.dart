@@ -41,23 +41,24 @@ class Auth {
         return null;
       }
     } catch (e) {
-      PlatformException pe = e as PlatformException;
+      FirebaseAuthException pe = e as FirebaseAuthException;
+      print("code code code " + pe.code);
       switch (pe.code) {
-        case 'ERROR_EMAIL_ALREADY_IN_USE':
+        case 'email-already-in-use':
           state.setPlaceholder(CText(
             value: 'This email is already registered',
             factor: 1.5,
             textColor: lightColor,
           ));
           break;
-        case 'ERROR_WEAK_PASSWORD':
+        case 'weak-password':
           state.setPlaceholder(CText(
             value: 'The password is too weak',
             factor: 1.5,
             textColor: lightColor,
           ));
           break;
-        case 'ERROR_INVALID_EMAIL':
+        case 'invalid-email':
           state.setPlaceholder(CText(
             value: 'This email is invalid',
             factor: 1.5,
@@ -90,10 +91,10 @@ class Auth {
         return null;
       }
     } catch (e) {
-      PlatformException pe = e as PlatformException;
-      print(pe.code);
+      FirebaseAuthException pe = e as FirebaseAuthException;
+      print("code returned from firebase" + pe.code);
       switch (pe.code) {
-        case 'ERROR_USER_NOT_FOUND':
+        case 'user-not-found':
           print('This email does\'nt exist');
           state.setPlaceholder(CText(
             value: 'This email does\'nt exist',
@@ -101,7 +102,7 @@ class Auth {
             textColor: lightColor,
           ));
           break;
-        case 'ERROR_INVALID_EMAIL':
+        case 'invalid-email':
           print('This email does\'nt seem right');
           state.setPlaceholder(CText(
             value: 'This email does\'nt seem right',
@@ -109,7 +110,7 @@ class Auth {
             textColor: lightColor,
           ));
           break;
-        case 'ERROR_WRONG_PASSWORD':
+        case 'wrong-password':
           print('Wrong password entered');
           state.setPlaceholder(CText(
             value: 'Wrong password entered',
@@ -117,7 +118,7 @@ class Auth {
             textColor: lightColor,
           ));
           break;
-        case 'ERROR_TOO_MANY_REQUESTS':
+        case 'too-many-requests':
           print('Too many attempts');
           state.setPlaceholder(CText(
             value: 'Too many attempts',

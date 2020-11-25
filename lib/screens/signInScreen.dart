@@ -101,6 +101,7 @@ class SignInScreen extends StatelessWidget {
                           builder: (context, signInState, child) => CButton(
                             text: 'Continue',
                             onPressed: () async {
+                              print('reached here');
                               if (signInState.validate()) {
                                 User user = await Auth.signIn(signInState.email,
                                     signInState.password, signInState);
@@ -111,7 +112,7 @@ class SignInScreen extends StatelessWidget {
                               }
 
                               //print('pressedd');
-                              Navigator.of(context).popAndPushNamed('/main');
+                              //Navigator.of(context).popAndPushNamed('/main');
                               // TODO @goga please find why hero animation not working
                               //Navigator.popAndPushNamed(context, '/main');
                               //Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainScreen(),));
